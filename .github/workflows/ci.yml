@@ -1,0 +1,25 @@
+name: Java CI Pipeline
+
+on: [push, pull_request]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17' # Adjust this to match your specific Java version
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Build, test, and generate coverage report
+        run: mvn clean test jacoco:report
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
