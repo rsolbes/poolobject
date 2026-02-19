@@ -36,7 +36,7 @@ public class ReusablePoolTest {
         @DisplayName("testGetInstance")
         @Disabled("Not implemented yet")
 	public void testGetInstance() {
-		
+		// Lucía Martín Asenjo. PRUEBA ******
 	}
 
 	/**
